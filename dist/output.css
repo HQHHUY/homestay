@@ -628,9 +628,25 @@ video {
   z-index: 30;
 }
 
+.order-1 {
+  order: 1;
+}
+
+.order-2 {
+  order: 2;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.mb-5 {
+  margin-bottom: 1.25rem;
 }
 
 .mb-8 {
@@ -665,6 +681,10 @@ video {
   height: 90px;
 }
 
+.h-\[93px\] {
+  height: 93px;
+}
+
 .h-full {
   height: 100%;
 }
@@ -673,12 +693,32 @@ video {
   width: 567px;
 }
 
+.w-\[90px\] {
+  width: 90px;
+}
+
 .w-full {
   width: 100%;
 }
 
 .max-w-\[1920px\] {
   max-width: 1920px;
+}
+
+.max-w-\[453px\] {
+  max-width: 453px;
+}
+
+.max-w-md {
+  max-width: 28rem;
+}
+
+.max-w-xl {
+  max-width: 36rem;
+}
+
+.flex-1 {
+  flex: 1 1 0%;
 }
 
 .cursor-pointer {
@@ -709,26 +749,37 @@ video {
   gap: 3rem;
 }
 
+.gap-2 {
+  gap: 0.5rem;
+}
+
 .gap-4 {
   gap: 1rem;
+}
+
+.gap-8 {
+  gap: 2rem;
 }
 
 .overflow-hidden {
   overflow: hidden;
 }
 
+.rounded-full {
+  border-radius: 9999px;
+}
+
 .border-t {
   border-top-width: 1px;
+}
+
+.bg-accent\/15 {
+  background-color: rgb(205 162 116 / 0.15);
 }
 
 .bg-gray-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
-}
-
-.bg-pink-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(251 207 232 / var(--tw-bg-opacity));
 }
 
 .bg-white {
@@ -756,13 +807,35 @@ video {
   padding: 0px;
 }
 
+.text-left {
+  text-align: left;
+}
+
 .text-center {
   text-align: center;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 .text-4xl {
   font-size: 2.25rem;
   line-height: 2.5rem;
+}
+
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.font-medium {
+  font-weight: 500;
 }
 
 .text-accent {
@@ -921,6 +994,10 @@ h6 {
 }
 
 @media (min-width: 1200px) {
+  .xl\:order-none {
+    order: 0;
+  }
+
   .xl\:mx-0 {
     margin-left: 0px;
     margin-right: 0px;
@@ -934,12 +1011,32 @@ h6 {
     height: 840px;
   }
 
+  .xl\:max-w-\[410px\] {
+    max-width: 410px;
+  }
+
+  .xl\:max-w-none {
+    max-width: none;
+  }
+
   .xl\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
+  .xl\:flex-row {
+    flex-direction: row;
+  }
+
+  .xl\:items-start {
+    align-items: flex-start;
+  }
+
   .xl\:justify-start {
     justify-content: flex-start;
+  }
+
+  .xl\:gap-\[74px\] {
+    gap: 74px;
   }
 
   .xl\:rounded-bl-\[290px\] {
@@ -956,6 +1053,11 @@ h6 {
 
   .xl\:bg-repeat-y {
     background-repeat: repeat-y;
+  }
+
+  .xl\:px-0 {
+    padding-left: 0px;
+    padding-right: 0px;
   }
 
   .xl\:text-left {
