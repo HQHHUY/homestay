@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alanotis - Trang chủ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 min-h-screen">
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center">
+                <div class="container mx-auto flex h-full items-center justify-between">
+                    <a href="http://127.0.0.1:5500/index.html">
+                        <img src="assets/logo.svg" alt="" />
+                    </a>
+                </div>
+
+            </div>
+            <div class="flex items-center space-x-4 bg-white rounded-full border p-2 flex-1 mx-4">
+                <input type="text" placeholder="Bất cứ nơi đâu" class="border-none flex-1 focus:outline-none"
+                    id="searchLocation">
+                <input type="text" placeholder="9 - 10 thg 10" class="border-none flex-1 focus:outline-none"
+                    id="searchDates">
+                <input type="text" placeholder="2 người" class="border-none flex-1 focus:outline-none"
+                    id="searchGuests">
+                <button class="p-2 rounded-full hover:bg-gray-100">
+                    <a class="fas fa-search text-gray-600"></a>
+                </button>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button class="px-4 py-2 border border-gray-300 rounded-full hover:bg-gray-100">Cho thuê phòng</button>
+                <button class="p-2 rounded-full hover:bg-gray-100">
+                    <a href="http://127.0.0.1:5500/user-profile.html">
+                        <i class="fas fa-user text-gray-600"></i>
+                    </a>
+                    
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <nav class="bg-white shadow-sm mt-1">
+        <div class="container mx-auto px-4 py-4">
+            <ul class="flex space-x-8 overflow-x-auto">
+                <li class="flex flex-col items-center space-y-1 cursor-pointer">
+                    <i class="fas fa-home text-gray-600"></i>
+                    <span class="text-sm">Hà Nội</span>
+                </li>
+                <li class="flex flex-col items-center space-y-1 cursor-pointer">
+                    <i class="fas fa-building text-gray-600"></i>
+                    <span class="text-sm">TP.HCM</span>
+                </li>
+                <li class="flex flex-col items-center space-y-1 cursor-pointer">
+                    <i class="fas fa-fire text-gray-600"></i>
+                    <span class="text-sm">Ưu đãi hấp dẫn</span>
+                </li>
+                <li class="flex flex-col items-center space-y-1 cursor-pointer">
+                    <i class="fas fa-clock text-gray-600"></i>
+                    <span class="text-sm">Theo giờ</span>
+                </li>
+                <li class="flex flex-col items-center space-y-1 cursor-pointer">
+                    <i class="fas fa-moon text-gray-600"></i>
+                    <span class="text-sm">Qua đêm</span>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="listingsContainer">
+            <!-- Listings will be dynamically inserted here -->
+        </div>
+    </main>
+
+    <script>
+
+        const listings = [
+            {
+                image: "/assets/work/01.png",
+                title: "[OFF 15%] Studio 02 - 82 Kim Mã/Máy chiếu",
+                location: "Ngõ 82 Phố Kim Mã, Ba Đình, Hà Nội",
+                rating: 5.0,
+                reviews: 16,
+                amenities: ["TV", "Wifi", "Máy lạnh"],
+                rooms: "1 Phòng ngủ · 1 Giường · 1 Phòng tắm · 1 Bếp",
+                price: 390515,
+                originalPrice: 649000,
+                discount: 40,
+            },
+            {
+                image: "/assets/work/03.png",
+                title: "Warm House HT 606 | TV NetFlix | Thang máy",
+                location: "Đường Xuân Diệu, Tây Hồ, Hà Nội",
+                rating: 5.0,
+                reviews: 4,
+                amenities: ["TV", "Wifi", "Máy lạnh"],
+                rooms: "1 Phòng ngủ · 1 Giường · 1 Phòng tắm · 1 Bếp",
+                price: 467372,
+                originalPrice: 629000,
+                discount: 26,
+            },
+            {
+                image: "/assets/work/03.png",
+                title: "Warm House HT 606 | TV NetFlix | Thang máy",
+                location: "Đường Xuân Diệu, Tây Hồ, Hà Nội",
+                rating: 5.0,
+                reviews: 4,
+                amenities: ["TV", "Wifi", "Máy lạnh"],
+                rooms: "1 Phòng ngủ · 1 Giường · 1 Phòng tắm · 1 Bếp",
+                price: 467372,
+                originalPrice: 629000,
+                discount: 26,
+            },
+            {
+                image: "/assets/work/03.png",
+                title: "Warm House HT 606 | TV NetFlix | Thang máy",
+                location: "Đường Xuân Diệu, Tây Hồ, Hà Nội",
+                rating: 5.0,
+                reviews: 4,
+                amenities: ["TV", "Wifi", "Máy lạnh"],
+                rooms: "1 Phòng ngủ · 1 Giường · 1 Phòng tắm · 1 Bếp",
+                price: 467372,
+                originalPrice: 629000,
+                discount: 26,
+            },
+            {
+                image: "/assets/work/03.png",
+                title: "Warm House HT 606 | TV NetFlix | Thang máy",
+                location: "Đường Xuân Diệu, Tây Hồ, Hà Nội",
+                rating: 5.0,
+                reviews: 4,
+                amenities: ["TV", "Wifi", "Máy lạnh"],
+                rooms: "1 Phòng ngủ · 1 Giường · 1 Phòng tắm · 1 Bếp",
+                price: 467372,
+                originalPrice: 629000,
+                discount: 26,
+            },
+            {
+                image: "/assets/work/03.png",
+                title: "Warm House HT 606 | TV NetFlix | Thang máy",
+                location: "Đường Xuân Diệu, Tây Hồ, Hà Nội",
+                rating: 5.0,
+                reviews: 4,
+                amenities: ["TV", "Wifi", "Máy lạnh"],
+                rooms: "1 Phòng ngủ · 1 Giường · 1 Phòng tắm · 1 Bếp",
+                price: 467372,
+                originalPrice: 629000,
+                discount: 26,
+            },
+            {
+                image: "/assets/work/03.png",
+                title: "Warm House HT 606 | TV NetFlix | Thang máy",
+                location: "Đường Xuân Diệu, Tây Hồ, Hà Nội",
+                rating: 5.0,
+                reviews: 4,
+                amenities: ["TV", "Wifi", "Máy lạnh"],
+                rooms: "1 Phòng ngủ · 1 Giường · 1 Phòng tắm · 1 Bếp",
+                price: 467372,
+                originalPrice: 629000,
+                discount: 26,
+            },
+            // Add more listings as needed
+        ];
+
+        function renderListings() {
+            const container = document.getElementById('listingsContainer');
+            container.innerHTML = '';
+            listings.forEach(listing => {
+                const listingElement = document.createElement('div');
+                listingElement.className = 'bg-white rounded-lg shadow-md overflow-hidden';
+                listingElement.innerHTML = `
+                    <img src="${listing.image}" alt="${listing.title}" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="font-semibold text-lg">${listing.title}</h3>
+                                <p class="text-sm text-gray-600">${listing.location}</p>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-sm font-semibold">${listing.rating}</span>
+                                <span class="text-xs text-gray-600">(${listing.reviews})</span>
+                            </div>
+                        </div>
+                        <div class="flex space-x-2 my-2">
+                            ${listing.amenities.map(amenity => `<span class="text-xs bg-gray-200 rounded-full px-2 py-1">${amenity}</span>`).join('')}
+                        </div>
+                        <p class="text-sm text-gray-600">${listing.rooms}</p>
+                        <div class="mt-2">
+                            <span class="font-semibold text-lg">${listing.price.toLocaleString()}đ</span>
+                            <span class="text-sm text-gray-600 line-through ml-2">${listing.originalPrice.toLocaleString()}đ</span>
+                            <span class="text-sm text-red-500 ml-2">-${listing.discount}%</span>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(listingElement);
+            });
+        }
+
+        // Initial render
+        renderListings();
+
+        // Add event listeners for search inputs
+        document.getElementById('searchLocation').addEventListener('input', renderListings);
+        document.getElementById('searchDates').addEventListener('input', renderListings);
+        document.getElementById('searchGuests').addEventListener('input', renderListings);
+    </script>
+</body>
+
+</html>

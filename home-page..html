@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlanOtis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/lucide-static@0.321.0/font/lucide.min.css" rel="stylesheet">
+</head>
+<body class="min-h-screen bg-gray-100">
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="container mx-auto flex h-full items-center justify-between">
+                <a href="http://127.0.0.1:5500/index.html">
+                    <img src="assets/logo.svg" alt="Logo">
+                </a>
+            </div>
+
+            <div class="flex items-center space-x-4 bg-white rounded-full border p-2 flex-1 mx-4">
+                <div class="relative flex-1">
+                    <input id="searchLocation" class="w-full border-none" placeholder="Hà Nội" value="Hà Nội">
+                    <div id="locationDropdown" class="hidden absolute top-full left-0 w-80 bg-white border rounded-md shadow-lg z-10">
+                        <div class="space-y-2 p-2">
+                            <div class="flex items-center space-x-2 p-2 hover:bg-gray-100 cursor-pointer">
+                                <img src="/placeholder.svg?height=40&width=40" alt="Hà Nội" class="w-10 h-10 rounded-full">
+                                <span>Hà Nội</span>
+                            </div>
+                            <div class="flex items-center space-x-2 p-2 hover:bg-gray-100 cursor-pointer">
+                                <img src="/placeholder.svg?height=40&width=40" alt="Hồ Chí Minh" class="w-10 h-10 rounded-full">
+                                <span>Hồ Chí Minh</span>
+                            </div>
+                            <div class="flex items-center space-x-2 p-2 hover:bg-gray-100 cursor-pointer">
+                                <span>Nơi nào cũng được</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input id="searchDates" class="border-none flex-1" placeholder="25 - 26 thg 10" value="25 - 26 thg 10">
+                <input id="searchGuests" class="border-none flex-1" placeholder="2 người" value="2 người">
+                <button class="p-2 rounded-full hover:bg-gray-100">
+                    <i class="lucide-search h-4 w-4"></i>
+                </button>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button class="px-4 py-2 border rounded-full hover:bg-gray-100">Cho thuê phòng</button>
+                <button class="p-2 rounded-full hover:bg-gray-100">
+                    <a href="http://127.0.0.1:5500/user-profile.html">
+                        <i class="fas fa-user text-gray-600"></i>
+                    </a>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <nav class="bg-white shadow-sm mt-1">
+        <div class="container mx-auto px-4 py-4">
+            <ul class="flex space-x-8 overflow-x-auto">
+                <li class="flex flex-col items-center space-y-1 cursor-pointer">
+                    <i class="lucide-home w-6 h-6"></i>
+                    <span class="text-sm">Hà Nội</span>
+                </li>
+                <li class="flex flex-col items-center space-y-1 cursor-pointer">
+                    <i class="lucide-building w-6 h-6"></i>
+                    <span class="text-sm">TP.HCM</span>
+                </li>
+                <li class="flex flex-col items-center space-y-1 cursor-pointer">
+                    <i class="lucide-bath w-6 h-6"></i>
+                    <span class="text-sm">Bồn tắm</span>
+                </li>
+                <li class="flex flex-col items-center space-y-1 cursor-pointer">
+                    <i class="lucide-dollar-sign w-6 h-6"></i>
+                    <span class="text-sm">Giá rẻ</span>
+                </li>
+                <li class="flex flex-col items-center space-y-1 cursor-pointer">
+                    <i class="lucide-map-pin w-6 h-6"></i>
+                    <span class="text-sm">Ngoại thành HN</span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="listingsContainer">
+            <!-- Listings will be dynamically inserted here -->
+        </div>
+    </main>
+
+    <script>
+        const searchLocation = document.getElementById('searchLocation');
+        const locationDropdown = document.getElementById('locationDropdown');
+        const searchDates = document.getElementById('searchDates');
+        const searchGuests = document.getElementById('searchGuests');
+        const listingsContainer = document.getElementById('listingsContainer');
+
+        searchLocation.addEventListener('focus', () => {
+            locationDropdown.classList.remove('hidden');
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!searchLocation.contains(event.target) && !locationDropdown.contains(event.target)) {
+                locationDropdown.classList.add('hidden');
+            }
+        });
+
+        locationDropdown.querySelectorAll('div').forEach(item => {
+            item.addEventListener('click', () => {
+                searchLocation.value = item.querySelector('span').textContent;
+                locationDropdown.classList.add('hidden');
+            });
+        });
+
+        const listings = [
+            {
+                image: "/placeholder.svg?height=200&width=300",
+                title: "Tiger TL7 | Bồn tắm chill | Máy chiếu & Netflix",
+                location: "Phố Trung Liệt, Đống Đa, Hà Nội",
+                rating: 4.8,
+                reviews: 235,
+                amenities: ["TV", "Wifi", "Máy lạnh"],
+                rooms: "1 Giường · 1 Phòng tắm · 1 Bếp",
+                price: 603570,
+                originalPrice: 649000,
+                discount: 7,
+            },
+            {
+                image: "/placeholder.svg?height=200&width=300",
+                title: "Cozie House 502 | 1BR Apt | Self Check-in | Netflix",
+                location: "Phố Phan Kế Bình, Ba Đình, Hà Nội",
+                rating: 4.9,
+                reviews: 32,
+                amenities: ["TV", "Wifi", "Máy lạnh"],
+                rooms: "1 Phòng ngủ · 1 Giường · 1 Phòng tắm · 1 Bếp",
+                price: 543213,
+                originalPrice: 649000,
+                discount: 16,
+                hourlyRate: { time: "9PM - 9AM", price: 543200 },
+            },
+        ];
+
+        function renderListings() {
+            listingsContainer.innerHTML = listings.map((listing, index) => `
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="relative">
+                        <img src="${listing.image}" alt="${listing.title}" class="w-full h-48 object-cover">
+                        <button class="absolute top-2 right-2 bg-white p-2 rounded-full hover:bg-gray-100">
+                            <i class="lucide-heart h-4 w-4"></i>
+                        </button>
+                        <div class="absolute top-2 left-2 bg-teal-500 text-white px-2 py-1 rounded-full text-xs">
+                            Checkin ngay
+                        </div>
+                        <div class="absolute bottom-2 left-2 bg-teal-500 text-white px-2 py-1 rounded-full text-xs">
+                            Yêu thích
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="font-semibold text-lg">${listing.title}</h3>
+                                <p class="text-sm text-gray-600">${listing.location}</p>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-sm font-semibold">${listing.rating}</span>
+                                <span class="text-xs text-gray-600">(${listing.reviews})</span>
+                            </div>
+                        </div>
+                        <div class="flex space-x-2 my-2">
+                            ${listing.amenities.map(amenity => `
+                                <span class="text-xs bg-gray-200 rounded-full px-2 py-1">${amenity}</span>
+                            `).join('')}
+                        </div>
+                        <p class="text-sm text-gray-600">${listing.rooms}</p>
+                        <div class="mt-2">
+                            <span class="font-semibold text-lg">${listing.price.toLocaleString()}đ</span>
+                            <span class="text-sm text-gray-600 line-through ml-2">${listing.originalPrice.toLocaleString()}đ</span>
+                            <span class="text-sm text-red-500 ml-2">-${listing.discount}%</span>
+                        </div>
+                        ${listing.hourlyRate ? `
+                            <div class="mt-1 text-sm text-gray-600">
+                                ${listing.hourlyRate.time} ${listing.hourlyRate.price.toLocaleString()}đ
+                            </div>
+                        ` : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        renderListings();
+    </script>
+</body>
+</html>
